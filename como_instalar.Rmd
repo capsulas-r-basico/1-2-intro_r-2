@@ -70,6 +70,7 @@ Página oficial de Rstudio (posit) [link](https://posit.co/download/rstudio-desk
 - Instalar Rstudio
 
 
+
 ---
 
 class: center, middle
