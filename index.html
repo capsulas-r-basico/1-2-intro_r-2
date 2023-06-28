@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Capacitación en R y herramientas de productividad</title>
+    <title>R and databases</title>
     <meta charset="utf-8" />
-    <meta name="author" content="" />
-    <meta name="date" content="2021-04-08" />
+    <meta name="date" content="2023-06-27" />
+    <script src="introduccion_R_files/header-attrs-2.18/header-attrs.js"></script>
+    <link href="introduccion_R_files/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="introduccion_R_files/panelset-0.2.6/panelset.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -16,17 +18,15 @@ class: center, middle
 .linea-superior[]
 .linea-inferior[]
 
-
 &lt;img src="imagenes/logo_portada2.png" width="200" /&gt;
 
+## INE Educa: Clases abiertas de R
 
-## Capacitación en R y herramientas de productividad
+## Introducción a R
 
-## Proyecto Estratégico Servicios Compartidos para la Producción Estadística
+## Proyecto Ciencia de Datos
 
-## Introducción a Rmarkdown
 
-### Junio 2021
 
 
 
@@ -38,217 +38,83 @@ background-image: url("imagenes/fondo2.PNG")
 background-size: contain;
 background-position: 100% 0%
 
-# Sesión 6: Introducción a RMarkdown
+# Rbase y Tidyverse
 
---
-&lt;br/&gt;
+&lt;img src="imagenes/rbase.jpeg" width="10%" style="display: block; margin: auto;" /&gt;
 
-.medium-par[Importancia de la reproducibilidad 🤖]
-&lt;br/&gt;
-&lt;br/&gt;
+.centered[El [*Rbase*](https://stat.ethz.ch/R-manual/R-devel/library/base/html/00Index.html) es el nombre que se le asigna a la lógica básica de R y sus principales funciones, éste funciona con una lógica de anidación o de adentro hacia afuera]
 
---
+Sobre Rbase se han desarrollado una infinidad de paquetes, uno de los mas relevantes es [Tidyverse](https://www.tidyverse.org/)
 
-.medium-par[¿Qué es RMarkdown?]
-&lt;br/&gt;
-&lt;br/&gt;
+&lt;img src="imagenes/hex-tidyverse.png" width="10%" style="display: block; margin: auto;" /&gt;
 
---
+[Tidyverse](https://www.tidyverse.org/) ofrece una infinidad de funciones que simplifican el trabajo de programación y el aprendizaje, ya que la lógica de su código es de izquierda a derecha. Es por esto que esto que las siguientes capsulas solo se enfocan en [Tidyverse](https://www.tidyverse.org/)
 
-.medium-par[Tipos de formatos de salida]
-&lt;br/&gt;
-&lt;br/&gt;
-
---
-
-.medium-par[Creando mi primer reporte con RMarkdown]
-&lt;br/&gt;
-&lt;br/&gt;
+**Sin embargo hay aspectos fundamentales de R que debemos conocer...**
 
 ---
-
-background-image: url(https://the-turing-way.netlify.app/_images/reproducibility.jpg)
-background-size: contain
-
----
-
 background-image: url("imagenes/fondo2.PNG")
 background-size: contain;
 background-position: 100% 0%
 
-# Importancia de la reproducibilidad
+# Operadores Lógicos
 
---
-&lt;br/&gt;
+.panelset[
+.panel[.panel-name[¿Cuáles son?]
 
-.center[.medium-par[¿Han escuchado el concepto de .pur[reproducibilidad]?🤔]]
+Los operadores lógicos son usados para describir relaciones lógicas, expresadas como verdadero (TRUE) o falso (FALSE).
 
---
+**&gt;** Mayor que
 
-.center[.big-par[¿Qué entienden por .pur[reproducibilidad]?]]
+**&gt;=** Mayor o igual que
 
---
+**&lt;** Menor que
 
-.center[.medium-par[¿En qué creen que puede aportar la .pur[reproducibilidad] en su trabajo cotidiano]?]
+**&lt;=** Menor o igual que
 
---
+**==** Igual que
 
-.center[.big-par[🤔]]
+**!=** Diferente Que
 
----
+**|**  Este O este otro
 
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
+**&amp;**  Este Y este otro
 
-# Importancia de la reproducibilidad
-
---
-&lt;br/&gt;
-
-Que otra persona (o mi yo del futuro) pueda ejecutar mi .pur[código] con .pur[los mismos datos] llegando **al mismo resultado**.
-
---
-&lt;br/&gt;
-&lt;br/&gt;
-
-.center[.big-par[**¿Qué puede salir mal?** ⚰️]]
-
---
-&lt;br/&gt;
-
-.center[
-&lt;img src= "https://media1.giphy.com/media/jM6JLt7xHkZxaeHwhG/200w.webp?cid=ecf05e478x4ytanztrx22si2y7ibrgekn371tgscimf4bemf&amp;rid=200w.webp" width="400"/&gt;
-]
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Importancia de la reproducibilidad
-
---
-&lt;br/&gt;
-&lt;br/&gt;
-
-
-.pull-left[
-&lt;br/&gt;
-&lt;br/&gt;
-
-&lt;img src = "https://media4.giphy.com/media/Q6rHMQaNbqsqBd8pVb/200w.webp?cid=ecf05e47coe8546mt2qzg63trkm1qmlbgzgt5kt10krdzvv5&amp;rid=200w.webp" width="400" /&gt;]
-
---
-
-.pull-right[
-
-
-- No sé si estoy usando los mismos datos
-
-- Rutas a archivos que son incorrectas
-
-- Aleatoriedad no reproducible
-
-- Comentarios escuetos en el código
-
-- Variables no localizadas (no estaban creadas en la rutina)
-
-- Diferentes versiones del *software* o de los paquetes
+**%in%** En el siguiente vector.... o no !variable **%in%** **vector**
 
 ]
+.panel[.panel-name[Un ejemplo]
+
+Por ejemplo, con == le *'pregunto'* a R si ese objeto tiene valor 1, las respuestas posibles son TRUE o FALSE
 
 
----
+```r
+# creo un objeto 
+uno = 1
 
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
+uno == 1 # TRUE es igual a 1
+```
 
-# Importancia de la reproducibilidad
+```
+## [1] TRUE
+```
 
---
+```r
+uno == 2 # FALSE no es 2
+```
 
-## Algunas soluciones:
+```
+## [1] FALSE
+```
 
---
+```r
+uno != 1 # FALSE es diferente de 1
+```
 
-No sé si estoy usando los mismos datos  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; 👉 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; .medium-par[.pur[script]]
-
---
-
-Rutas a archivos que son incorrectas &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;   👉 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  .medium-par[.pur[script]]
-
---
-
-Aleatoriedad no reproducible  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  👉  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  .medium-par[.pur[set.seed()]], entre otros 
-
---
-
-Comentarios escuetos en el código  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;   👉  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  .medium-par[.pur[🧐 (estilo de código)]]
-
---
-
-Variables no localizadas (no creadas en la rutina) &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;   👉 &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  .medium-par[.pur[RMarkdown]]
-
---
-
-Diferentes versiones del *software* o de los paquetes &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  👉  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; .medium-par[.pur[🐳]]
-
---
-
-.center[.medium.par[De todas maneras, salvo el último punto, todo esto y más podría solucionarse usando .pur[RMarkdown]]]
-
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Importancia de la reproducibilidad
-
---
-&lt;br/&gt;
-&lt;br/&gt;
-&lt;br/&gt;
-&lt;br/&gt;
-&lt;br/&gt;
-
-&lt;img src =https://www.researchgate.net/profile/Arthur_Piazzi/publication/325910795/figure/fig2/AS:640119719620611@1529627842920/Reproducibility-Spectrum.png width="800"/&gt;
-
----
-
-background-image: url(https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/rmarkdown_wizards.png)
-background-size: contain
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# R Markdown
-
---
-
-`R Markdown` .pur[provee de un marco] para generar documentos en el contexto del análisis de datos. En un único documento de `R Markdown` podemos:
-
---
-
-.pull-left[
-Guardar y ejecutar código.
-
-Generar reportes de alta calidad que pueden ser compartidos fácilmente.
-
-Los documentos creados con `R Markdown` son completamente reproducibles.
-
-Generar presentaciones con **código** y **tablas**, **imágenes**, etc. (como las de este curso).
-]
-
-.pull-right[
-![](https://www.rstudio.com/wp-content/uploads/2017/05/rmarkdown.png)
+```
+## [1] FALSE
+```
+ ]
 ]
 
 ---
@@ -256,331 +122,218 @@ background-image: url("imagenes/fondo2.PNG")
 background-size: contain;
 background-position: 100% 0%
 
-# R Markdown
+# Tipos de datos
 
---
+Texto o String
 
-## Cómo funciona
+```r
+texto = "hola"
 
-Los archivos de `R Markdown` en general tienen 3 partes:
+texto
+```
 
---
+```
+## [1] "hola"
+```
 
-(1). Un encabezado que permite configurar inicialmente el documento que vamos a escribir (**yaml**)
+Numérico
 
+```r
+numero = 12
 
-![](https://smac-group.github.io/ds/images/rmd_yaml.png)
+numero
+```
+
+```
+## [1] 12
+```
+
+Boleano
+
+```r
+bolean = TRUE # o FALSE
+
+bolean
+```
+
+```
+## [1] TRUE
+```
 
 ---
-
 background-image: url("imagenes/fondo2.PNG")
 background-size: contain;
 background-position: 100% 0%
 
-# R Markdown
+# Estructuras de datos básicas - Vectores
 
---
+.panelset[
+.panel[.panel-name[Vectores]
 
-(2). "Pedazos de código" (o en inglés, ***chunk codes***).
-
-![](https://smac-group.github.io/ds/images/rmd_code_chunk.png)
-
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# R Markdown
-
---
-
-(3). Los **cuerpos de texto** donde podemos hacer comentarios sin necesidad de usar "#"
+pueden contener, números, textos o boleanos, un vector solo puede tener un tipo de dato
 
 
-![](imagenes/rmd_text.PNG)
+```r
+vector = c(1,FALSE,5,6)
 
----
+vector
+```
 
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
+```
+## [1] 1 0 5 6
+```
 
-# R Markdown
+```r
+vector = c(1,"hola",FALSE,5,6)
 
---
+vector
+```
 
-Para generar el documento se puede utilizar el comando `render` o bien utilizar el botón `Knit` (Tejer).
+```
+## [1] "1"     "hola"  "FALSE" "5"     "6"
+```
+Como podemos ver en el código anterior, si mezclamos un boleano con numéricos el boleano pasará a ser un número (TRUE = 1, FALSE= 0).
+Si agregamos un texto, todo el resto del vector pasará a ser texto. 
 
-.center[
+]
 
-![](https://d33wubrfki0l68.cloudfront.net/eb48bae40b24285c0c8f281e6d2a7500cf3b9fc8/a2e5f/knitr/images/knit-logo.png)
+.panel[.panel-name[Subset en vectores]
+
+
+```r
+vector[2]
+```
+
+```
+## [1] "hola"
+```
+
+```r
+vector[2:5]
+```
+
+```
+## [1] "hola"  "FALSE" "5"     "6"
+```
+
+
+
+ ]
 ]
 
 ---
-
 background-image: url("imagenes/fondo2.PNG")
 background-size: contain;
 background-position: 100% 0%
 
-# R Markdown
+# Estructuras de datos básicas - Dataframes
+
+.panelset[
+.panel[.panel-name[Dataframes]
+
+
+
+```r
+datos = data.frame(nombre = c("Julia","Pedro", "Juan", "Diego"), 
+                  nota1 = c(6.0,4.4,5.1,3.0), 
+                  nota2 = c(4.9,2.8,6.9,4.4))
+```
 
 --
 
-## Cómo funciona
+ ¿Como accedo a una variable?
 
-.middle[
-![](https://d33wubrfki0l68.cloudfront.net/61d189fd9cdf955058415d3e1b28dd60e1bd7c9b/b739c/lesson-images/rmarkdownflow.png)
+
+```r
+datos$nombre
+```
+
+```
+## [1] "Julia" "Pedro" "Juan"  "Diego"
+```
+
 ]
 
---
+.panel[.panel-name[Subsets]
 
-`R Markdown` ofrece muchas posibilidades. Veremos mayormente cómo crear documentos en formato .pdf usando `R Markdown`, donde se puede incrustar código en `\(\LaTeX\)`.
+Subset en dataframes, siempre cuidando el uso de la coma
 
---
 
-Una de las principales **desventajas** de RMarkdown es que toma bastante **tiempo**⏰🕰️ hacer un documento la primera vez que se usa.
+```r
+datos[1,] # para filas
+```
 
---
+```
+##   nombre nota1 nota2
+## 1  Julia     6   4.9
+```
 
-Y generalmente hay que **estudiar** un poco con google para que nuestros documentos resulten tal y como los imaginamos.
+```r
+datos[,1] # para columnas
+```
 
---
+```
+## [1] "Julia" "Pedro" "Juan"  "Diego"
+```
 
-`\(\LaTeX\)` es un sistema de composición de textos orientado a la creación de documentos científicos.
+o utilizando vectores
 
---
 
-`\(\LaTeX\)` es muy útil para escribir textos que incluyen notación matemática.
+```r
+datos[,c(1,3)]
+```
 
---
+```
+##   nombre nota2
+## 1  Julia   4.9
+## 2  Pedro   2.8
+## 3   Juan   6.9
+## 4  Diego   4.4
+```
 
-`R Markdown` cuenta con varias herramientas que nos permiten eximirnos un poco del conocimiento de `\(\LaTeX\)` ⏩⏩⏩
+```r
+datos[,c("nombre","nota2")]
+```
 
----
+```
+##   nombre nota2
+## 1  Julia   4.9
+## 2  Pedro   2.8
+## 3   Juan   6.9
+## 4  Diego   4.4
+```
 
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Ahora manos a la obra 👐 
-
---
-
-.big-par[Vamos a crear un RMarkdown en distintos formatos.]
-
---
-
-.medium-par[html]
-
---
-
-.medium-par[html-presentación]
-
---
-
-.medium-par[PDF]
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Rmarkdown
-
-## Configuración de los chunks
-
---
-&lt;br/&gt;
-
-Los chunks tienen muchos argumentos que permiten moldear el output a lo que deseamos.
-
---
-
-Existe un chunk llamado por defecto "setup".
-
---
-
-.discussion[
-{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 ]
 
---
+.panel[.panel-name[Subset lógicos]
 
-A través de este chunk es posible setear la configuración por defecto.
+Ahora con un vector de nuestro dataframe
 
---
 
-Esto lo hacemos cuando vamos a utilizar mucho alguna configuración, .pur[para no repetirla en cada chunk].
+```r
+datos$nombre == "Julia"
+```
 
---
+```
+## [1]  TRUE FALSE FALSE FALSE
+```
 
-Los mismos argumentos se pueden utilizar para ajustar cualquier chunk.
+Ahora, si me interesa ver solo las notas de Julia
 
----
 
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
+```r
+datos[datos$nombre == "Julia",]
+```
 
-# Rmarkdown
+```
+##   nombre nota1 nota2
+## 1  Julia     6   4.9
+```
 
---
+Se pueden utilizar todos los operadores lógicos
 
-## Principales argumentos de los chunks
-
---
-
-- include = FALSE/TRUE
-
---
-
-- echo = FALSE/TRUE
-
---
-
-- message = FALSE/TRUE
-
---
-
-- warning = FALSE/TRUE
-
---
-
-- error = FALSE/TRUE
-
---
-
-**nota:** el shortcut para generar chunks en RMarkdown es .medium-par[.pur[Ctrl+Alt+i]]
-
---
-
-Este shortcut realmente ahorra muuuchos pasos.
-
---
-
-Revisemos esta guía de funcionalidades de [RMarkdown](https://rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf?_ga=2.232725209.739649860.1603251660-1579346009.1585862093)
-
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Rmarkdown
-
---
-
-## Algunos elementos a considerar al trabajar en Rmarkdown
-
---
-
-`knitr()` (tejer) es una función. Y las funciones requieren que todo lo que se necesite se encuentre dentro de su ámbito. Entonces:
-
---
-
-    - La función setwd() no funciona dentro de RMarkdown.
-    
-    - Las librerías que necesiten deben estar cargadas en el script de 
-      Rmarkdown (**error habitual**).
-    
-    - Tanto las bases de datos como las variables a utilizar deben estar
-      llamadas dentro el script de Rmarkdown.
-    
-    - Knitr() incluye la impresión de los resultados, por lo que no 
-      es necesario usar print().
-    
-    - No usar View() en RMarkdown, porque en el output no mostrará nada.
-    
-    - Cada chunk puede tener o no tener un nombre. Si los deciden nombrar, 
-      los nombres NO DEBEN REPETIRSE (**error habitual**).
-
---
-
-Ahora echemos un vistazo a ejemplos más elaborados 👀.
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Rmarkdown
-
---
-&lt;br/&gt;
-&lt;br/&gt;
-&lt;br/&gt;
-
-.center[.big-par[Ya tienen algunas herramientas para hacer su tarea en RMarkdown ⚒️]]
-
---
-
-.center[.medium-par[.pur[La mejor manera de aprender es probando]]]
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Referencias
-
-.medium-par[Nada de esto sería posible sin:]
-
-- [Presentación de Daniela Ballari en LatinR 2020 ](https://www.youtube.com/watch?v=Hvrb2b7v93w)
-
-- [Guía para la reproducibilidad en investigación - The Turing Project](https://the-turing-way.netlify.app/welcome.html)
-
-- [Xaringan: Presentation Ninja, de Yihui Xie](https://github.com/yihui/xaringan). Para generar esta presentación con la plantilla ninja ⚔
-
-- [R for Data Science, de Hadley Wickham, capítulo 14](https://r4ds.had.co.nz/)
-
-- [Advanced R, de Hadley Wickham](http://adv-r.had.co.nz/Introduction.html)
-
-- [Introduction to R, de Data Carpentry](https://datacarpentry.org/R-genomics/01-intro-to-R.html#functions)
-
-
-.medium-par[R for Data Science tiene una traducción al español realizada por la comunidad hispana de R:]
-
-- [R para ciencia de datos, de Hadley Wickham, capítulo 14](https://es.r4ds.hadley.nz/)
-
----
-
-background-image: url("imagenes/fondo2.PNG")
-background-size: contain;
-background-position: 100% 0%
-
-# Otras referencias
-
---
-
-## Para inspirarnos
-
---
-
-### Ejemplos de documentos usando `R Markdown`
-
-`R Markdown` puede generar archivos como páginas web, documentos en Word o PDF, tableros dinámico (*dashboard*),  presentaciones en HTML y otros formatos.
-
-- [Link para curiosear](https://rmarkdown.rstudio.com/gallery.html)
-
-- [Más links para curiosear](https://bookdown.org/yihui/rmarkdown/basics-examples.html)
-
-### Guías de referencia
-
-- [`R Markdown`: *The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/)
-
-- [`R Markdown` *Cheatsheet*](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
-
-- [Resumen de R funcionalidades de R Markdown](https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
-
-- Por si alguien quiere hacer una tesis: [*Writing your dissertation (or Thesis) in* `R Markdown`](https://tysonbarrett.com//jekyll/update/2018/02/11/r_dissertation/)
-
+]
+]
 ---
 
 class: center, middle
@@ -588,24 +341,22 @@ class: center, middle
 .linea-superior[]
 .linea-inferior[]
 
-
 &lt;img src="imagenes/logo_portada2.png" width="200" /&gt;
 
 
-## Capacitación en R y herramientas de productividad
+## INE Educa: Clases abiertas de R
 
-## Proyecto Estratégico Servicios Compartidos para la Producción Estadística
+## Proyecto Ciencia de Datos
 
-## Introducción a RMarkdown
-
-### Junio 2021
+## Uniendo dataframes
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightStyle": "github",
 "highlightLines": true,
-"countIncrementalSlides": false
+"countIncrementalSlides": false,
+"ratio": "13:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
@@ -646,6 +397,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
