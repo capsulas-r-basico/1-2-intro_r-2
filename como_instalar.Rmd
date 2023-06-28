@@ -54,7 +54,7 @@ background-position: 100% 0%
 
 Página oficial de Rstudio (posit) [link](https://posit.co/download/rstudio-desktop/)
 
-.center[<img src="imagenes/downloadR.png" width="700" />]
+.center[<img src="imagenes/downloadR2.png" width="700" />]
 
 
 --
